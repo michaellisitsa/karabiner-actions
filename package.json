@@ -1,0 +1,26 @@
+{
+  "name": "karabiner-actions",
+  "version": "0.0.1",
+  "description": "Generate Karabiner JSON",
+  "main": "my-index.ts",
+  "scripts": {
+    "build": "tsx my-index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KyleKing/karabiner-actions.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KyleKing/karabiner-actions/issues"
+  },
+  "homepage": "https://github.com/KyleKing/karabiner-actions#readme",
+  "devDependencies": {
+    "tsx": "^4.19.1"
+  },
+  "dependencies": {
+    "karabiner.ts": "^1.30.0"
+  }
+}

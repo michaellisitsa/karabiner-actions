@@ -1,40 +1,15 @@
 import {
-  layer,
   map,
-  NumberKeyValue,
   rule,
-  withMapper,
   writeToProfile,
-  isSideMultiModifierAlias,
-  parseSideMultiModifierAlias,
-  SideModifierAlias,
-  ArrowKeyCode,
-  arrowKeyCodes,
-  ControlOrSymbolKeyCode,
-  controlOrSymbolKeyCodes,
-  fromOnlyKeyCodes,
-  functionKeyCodes,
-  internationalKeyCodes,
-  japaneseKeyCodes,
-  KeyCode,
-  keypadKeyCodes,
-  letterKeyCodes,
-  modifierKeyCodes,
-  numberKeyCodes,
-  otherKeyCodes,
-  pcKeyboardKeyCodes,
-  stickyModifierKeyCodes,
-  toOnlyKeyCodes,
-  simlayer,
   mapSimultaneous,
   toKey,
   toStickyModifier,
-  BasicParameters,
   toNone,
 } from "karabiner.ts";
 
 writeToProfile(
-  "Erlend",
+  "Default profile",
   [
     rule("Caps + Quote -> Hyper").manipulators([
       map("⇪")
@@ -208,83 +183,6 @@ writeToProfile(
         .toIfAlone("j", {}, { halt: true })
         .toDelayedAction(toKey("vk_none"), toKey("j"))
         .toIfHeldDown("r⌘", {}, { halt: true }),
-    ]),
-    //
-    // Meh
-    rule("R_U = Meh ").manipulators([
-      map("r")
-        .toIfAlone("r", {}, { halt: true })
-        .toDelayedAction(toKey("vk_none"), toKey("r"))
-        .toIfHeldDown("l⇧", "l⌥⌃", { halt: true })
-        .parameters({ "basic.to_if_held_down_threshold_milliseconds": 220 }),
-      map("u")
-        .toIfAlone("u", {}, { halt: true })
-        .toDelayedAction(toKey("vk_none"), toKey("u"))
-        .toIfHeldDown("r⇧", "r⌥⌃", { halt: true })
-        .parameters({ "basic.to_if_held_down_threshold_milliseconds": 220 }),
-    ]),
-    //
-    // Norwegian Markdown helper
-    rule("Nordic Markdown Helper").manipulators([
-      map("]")
-        .toIfAlone("/", "⇧", { halt: true })
-        .toDelayedAction(toNone(), toKey("/", "⇧"))
-        .toIfHeldDown("\\", "⇧", { halt: true })
-        .toIfHeldDown("\\", "⇧", { halt: true }),
-      map("]", "Meh").to("]"),
-      map("]", "⌥⇧").to("]"),
-    ]),
-    //
-    // More arrow clicks
-    rule("Meh + Arrow = 5 Arrows | Hyper + Arrow = 10 Arrows").manipulators([
-      map("↑", "Meh").to("↑").to("↑").to("↑").to("↑").to("↑"),
-      map("↓", "Meh").to("↓").to("↓").to("↓").to("↓").to("↓"),
-      map("←", "Meh").to("←").to("←").to("←").to("←").to("←"),
-      map("→", "Meh").to("→").to("→").to("→").to("→").to("→"),
-      map("↑", "Hyper")
-        .to("↑")
-        .to("↑")
-        .to("↑")
-        .to("↑")
-        .to("↑")
-        .to("↑")
-        .to("↑")
-        .to("↑")
-        .to("↑")
-        .to("↑"),
-      map("↓", "Hyper")
-        .to("↓")
-        .to("↓")
-        .to("↓")
-        .to("↓")
-        .to("↓")
-        .to("↓")
-        .to("↓")
-        .to("↓")
-        .to("↓")
-        .to("↓"),
-      map("←", "Hyper")
-        .to("←")
-        .to("←")
-        .to("←")
-        .to("←")
-        .to("←")
-        .to("←")
-        .to("←")
-        .to("←")
-        .to("←")
-        .to("←"),
-      map("→", "Hyper")
-        .to("→")
-        .to("→")
-        .to("→")
-        .to("→")
-        .to("→")
-        .to("→")
-        .to("→")
-        .to("→")
-        .to("→")
-        .to("→"),
     ]),
   ],
   {
