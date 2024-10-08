@@ -1,6 +1,6 @@
 # Karabiner Actions
 
-Thanks to the original work in <https://github.com/evan-liu/karabiner.ts>, I had an incredible starting place to implement home row mods on a built-in keyboard (and replace buggy HRM in QMK).
+Thanks to the original work in <https://github.com/Erlendms/karabiner-actions>, I had an incredible starting place to implement home row mods on a built-in keyboard (and replace buggy HRM in QMK).
 
 I plan to add additional functionality, but as a first-pass, this fork implements the GACS variant of HRM and is configurable to any order.
 

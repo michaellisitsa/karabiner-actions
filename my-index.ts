@@ -16,6 +16,8 @@ const R_ALT = "k";
 const R_CTRL = "l";
 const R_GUI = ";";
 
+const KEY_DOWN_ORDER = 'insensitive'; // strict is recommended if issues
+
 writeToProfile(
   "Default profile",
   [
@@ -45,55 +47,55 @@ writeToProfile(
       //
       // Three - left hand
       mapSimultaneous([L_SHIFT, L_CTRL, L_ALT]).toIfHeldDown("left⇧", ["left⌥⌃"]),
-      mapSimultaneous([L_SHIFT, L_ALT, L_GUI]).toIfHeldDown("left⇧", ["left⌘⌃"]),
+      mapSimultaneous([L_SHIFT, L_ALT, L_GUI]).toIfHeldDown("left⇧", ["left⌘⌥"]),
       mapSimultaneous([L_CTRL, L_ALT, L_GUI]).toIfHeldDown("left⌘", ["left⌥⌃"]),
       //
       // Two - left hand
-      mapSimultaneous([L_SHIFT, L_CTRL], { key_down_order: "strict" })
+      mapSimultaneous([L_SHIFT, L_CTRL], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_SHIFT)
         .toIfAlone(L_CTRL)
         .toIfHeldDown("left⇧", "left⌃"),
-      mapSimultaneous([L_CTRL, L_SHIFT], { key_down_order: "strict" })
+      mapSimultaneous([L_CTRL, L_SHIFT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_CTRL)
         .toIfAlone(L_SHIFT)
         .toIfHeldDown("left⇧", "left⌃"),
-      mapSimultaneous([L_SHIFT, L_ALT], { key_down_order: "strict" })
+      mapSimultaneous([L_SHIFT, L_ALT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_SHIFT)
         .toIfAlone(L_ALT)
         .toIfHeldDown("left⇧", "left⌥"),
-      mapSimultaneous([L_ALT, L_SHIFT], { key_down_order: "strict" })
+      mapSimultaneous([L_ALT, L_SHIFT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_ALT)
         .toIfAlone(L_SHIFT)
         .toIfHeldDown("left⇧", "left⌥"),
-      mapSimultaneous([L_SHIFT, L_GUI], { key_down_order: "strict" })
+      mapSimultaneous([L_SHIFT, L_GUI], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_SHIFT)
         .toIfAlone(L_GUI)
         .toIfHeldDown("left⇧", "left⌘"),
-      mapSimultaneous([L_GUI, L_SHIFT], { key_down_order: "strict" })
+      mapSimultaneous([L_GUI, L_SHIFT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_GUI)
         .toIfAlone(L_SHIFT)
         .toIfHeldDown("left⇧", "left⌘"),
-      mapSimultaneous([L_CTRL, L_ALT], { key_down_order: "strict" })
+      mapSimultaneous([L_CTRL, L_ALT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_CTRL)
         .toIfAlone(L_ALT)
         .toIfHeldDown("left⌃", "left⌥"),
-      mapSimultaneous([L_ALT, L_CTRL], { key_down_order: "strict" })
+      mapSimultaneous([L_ALT, L_CTRL], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_ALT)
         .toIfAlone(L_CTRL)
         .toIfHeldDown("left⌃", "left⌥"),
-      mapSimultaneous([L_CTRL, L_GUI], { key_down_order: "strict" })
+      mapSimultaneous([L_CTRL, L_GUI], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_CTRL)
         .toIfAlone(L_GUI)
         .toIfHeldDown("left⌃", "left⌘"),
-      mapSimultaneous([L_GUI, L_CTRL], { key_down_order: "strict" })
+      mapSimultaneous([L_GUI, L_CTRL], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_GUI)
         .toIfAlone(L_CTRL)
         .toIfHeldDown("left⌃", "left⌘"),
-      mapSimultaneous([L_ALT, L_GUI], { key_down_order: "strict" })
+      mapSimultaneous([L_ALT, L_GUI], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_ALT)
         .toIfAlone(L_GUI)
         .toIfHeldDown("left⌥", "left⌘"),
-      mapSimultaneous([L_GUI, L_ALT], { key_down_order: "strict" })
+      mapSimultaneous([L_GUI, L_ALT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_GUI)
         .toIfAlone(L_ALT)
         .toIfHeldDown("left⌥", "left⌘"),
@@ -126,51 +128,51 @@ writeToProfile(
       mapSimultaneous([R_ALT, R_CTRL, R_GUI]).toIfHeldDown("right⌃", ["right⌘⌥"]),
       //
       // Two - right hand
-      mapSimultaneous([R_SHIFT, R_ALT], { key_down_order: "strict" })
+      mapSimultaneous([R_SHIFT, R_ALT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_SHIFT)
         .toIfAlone(R_ALT)
         .toIfHeldDown("right⇧", "right⌃"),
-      mapSimultaneous([R_ALT, R_SHIFT], { key_down_order: "strict" })
+      mapSimultaneous([R_ALT, R_SHIFT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_ALT)
         .toIfAlone(R_SHIFT)
         .toIfHeldDown("right⇧", "right⌃"),
-      mapSimultaneous([R_SHIFT, R_CTRL], { key_down_order: "strict" })
+      mapSimultaneous([R_SHIFT, R_CTRL], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_SHIFT)
         .toIfAlone(R_CTRL)
         .toIfHeldDown("right⇧", "right⌥"),
-      mapSimultaneous([R_CTRL, R_SHIFT], { key_down_order: "strict" })
+      mapSimultaneous([R_CTRL, R_SHIFT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_CTRL)
         .toIfAlone(R_SHIFT)
         .toIfHeldDown("right⇧", "right⌥"),
-      mapSimultaneous([R_SHIFT, R_GUI], { key_down_order: "strict" })
+      mapSimultaneous([R_SHIFT, R_GUI], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_SHIFT)
         .toIfAlone(R_GUI)
         .toIfHeldDown("right⇧", "right⌘"),
-      mapSimultaneous([R_GUI, R_SHIFT], { key_down_order: "strict" })
+      mapSimultaneous([R_GUI, R_SHIFT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_GUI)
         .toIfAlone(R_SHIFT)
         .toIfHeldDown("right⇧", "right⌘"),
-      mapSimultaneous([R_ALT, R_CTRL], { key_down_order: "strict" })
+      mapSimultaneous([R_ALT, R_CTRL], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_ALT)
         .toIfAlone(R_CTRL)
         .toIfHeldDown("right⌃", "right⌥"),
-      mapSimultaneous([R_CTRL, R_ALT], { key_down_order: "strict" })
+      mapSimultaneous([R_CTRL, R_ALT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_CTRL)
         .toIfAlone(R_ALT)
         .toIfHeldDown("right⌃", "right⌥"),
-      mapSimultaneous([R_ALT, R_GUI], { key_down_order: "strict" })
+      mapSimultaneous([R_ALT, R_GUI], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_ALT)
         .toIfAlone(R_GUI)
         .toIfHeldDown("right⌃", "right⌘"),
-      mapSimultaneous([R_GUI, R_ALT], { key_down_order: "strict" })
+      mapSimultaneous([R_GUI, R_ALT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_GUI)
         .toIfAlone(R_ALT)
         .toIfHeldDown("right⌃", "right⌘"),
-      mapSimultaneous([R_CTRL, R_GUI], { key_down_order: "strict" })
+      mapSimultaneous([R_CTRL, R_GUI], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_CTRL)
         .toIfAlone(R_GUI)
         .toIfHeldDown("right⌥", "right⌘"),
-      mapSimultaneous([R_GUI, R_CTRL], { key_down_order: "strict" })
+      mapSimultaneous([R_GUI, R_CTRL], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_GUI)
         .toIfAlone(R_CTRL)
         .toIfHeldDown("right⌥", "right⌘"),
@@ -195,9 +197,9 @@ writeToProfile(
     ]),
   ],
   {
-    "basic.to_if_alone_timeout_milliseconds": 1000, // Default 1000
-    "basic.to_if_held_down_threshold_milliseconds": 150, // Default 500
-    "basic.to_delayed_action_delay_milliseconds": 500, // Default 500
-    "basic.simultaneous_threshold_milliseconds": 30, // Default 50
+    "basic.to_if_alone_timeout_milliseconds": 500, // Default 1000
+    "basic.to_if_held_down_threshold_milliseconds": 90, // Default 500
+    "basic.to_delayed_action_delay_milliseconds": 300, // Default 500
+    "basic.simultaneous_threshold_milliseconds": 45, // Default 50
   },
 );
