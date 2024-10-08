@@ -43,12 +43,12 @@ writeToProfile(
     rule(`Home Row Mods (GUI: ${L_GUI}, Ctrl: ${L_CTRL}, Alt: ${L_ALT}, Shift: ${L_SHIFT})`).manipulators([
       //
       // Four - left hand
-      mapSimultaneous([L_SHIFT, L_CTRL, L_ALT, L_GUI]).toIfHeldDown("left⇧", ["left⌘⌥⌃"]),
+      mapSimultaneous([L_SHIFT, L_CTRL, L_ALT, L_GUI]).toIfHeldDown("left⇧", ["l⌘⌥⌃"]),
       //
       // Three - left hand
-      mapSimultaneous([L_SHIFT, L_CTRL, L_ALT]).toIfHeldDown("left⇧", ["left⌥⌃"]),
-      mapSimultaneous([L_SHIFT, L_ALT, L_GUI]).toIfHeldDown("left⇧", ["left⌘⌥"]),
-      mapSimultaneous([L_CTRL, L_ALT, L_GUI]).toIfHeldDown("left⌘", ["left⌥⌃"]),
+      mapSimultaneous([L_SHIFT, L_CTRL, L_ALT]).toIfHeldDown("left⇧", ["l⌥⌃"]),
+      mapSimultaneous([L_SHIFT, L_ALT, L_GUI]).toIfHeldDown("left⇧", ["l⌘⌥"]),
+      mapSimultaneous([L_CTRL, L_ALT, L_GUI]).toIfHeldDown("left⌃", ["l⌘⌥"]),
       //
       // Two - left hand
       mapSimultaneous([L_SHIFT, L_CTRL], { key_down_order: KEY_DOWN_ORDER })
