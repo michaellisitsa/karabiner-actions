@@ -44,9 +44,9 @@ writeToProfile(
       mapSimultaneous([L_SHIFT, L_CTRL, L_ALT, L_GUI]).toIfHeldDown("left⇧", ["left⌘⌥⌃"]),
       //
       // Three - left hand
-      mapSimultaneous([L_SHIFT, L_CTRL, L_ALT]).toIfHeldDown("left⌘", ["left⌥⌃"]),
+      mapSimultaneous([L_SHIFT, L_CTRL, L_ALT]).toIfHeldDown("left⇧", ["left⌥⌃"]),
       mapSimultaneous([L_SHIFT, L_ALT, L_GUI]).toIfHeldDown("left⇧", ["left⌘⌃"]),
-      mapSimultaneous([L_CTRL, L_ALT, L_GUI]).toIfHeldDown("left⇧", ["left⌘⌥"]),
+      mapSimultaneous([L_CTRL, L_ALT, L_GUI]).toIfHeldDown("left⌘", ["left⌥⌃"]),
       //
       // Two - left hand
       mapSimultaneous([L_SHIFT, L_CTRL], { key_down_order: "strict" })
@@ -195,6 +195,9 @@ writeToProfile(
     ]),
   ],
   {
-    "basic.to_if_held_down_threshold_milliseconds": 120,
+    "basic.to_if_alone_timeout_milliseconds": 1000, // Default 1000
+    "basic.to_if_held_down_threshold_milliseconds": 150, // Default 500
+    "basic.to_delayed_action_delay_milliseconds": 500, // Default 500
+    "basic.simultaneous_threshold_milliseconds": 30, // Default 50
   },
 );
