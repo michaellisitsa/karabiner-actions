@@ -50,6 +50,11 @@ writeToProfile(
           .condition(ifVar("caps_lock_state", 1))
           .to(toSetVar("caps_lock_state", 0))
           .to("caps_lock"),
+        map("escape")
+          .condition(ifVar("caps_lock_state", 1))
+          .to(toSetVar("caps_lock_state", 0))
+          .to("caps_lock"),
+        map("-").condition(ifVar("caps_lock_state", 1)).to("-", ["left⇧"]),
       ]),
       mapSimultaneous([L_SHIFT, R_SHIFT])
         .to(toSetVar("caps_lock_state", 1))
@@ -144,12 +149,20 @@ writeToProfile(
       //
       //
       // Four - right hand
-      mapSimultaneous([R_GUI, R_CTRL, R_ALT, R_SHIFT]).toIfHeldDown("right⇧", ["right⌘⌥⌃"]),
+      mapSimultaneous([R_GUI, R_CTRL, R_ALT, R_SHIFT]).toIfHeldDown("right⇧", [
+        "right⌘⌥⌃",
+      ]),
       //
       // Three - right hand
-      mapSimultaneous([R_SHIFT, R_ALT, R_CTRL]).toIfHeldDown("right⇧", ["right⌥⌃"]),
-      mapSimultaneous([R_SHIFT, R_CTRL, R_GUI]).toIfHeldDown("right⇧", ["right⌘⌥"]),
-      mapSimultaneous([R_ALT, R_CTRL, R_GUI]).toIfHeldDown("right⌃", ["right⌘⌥"]),
+      mapSimultaneous([R_SHIFT, R_ALT, R_CTRL]).toIfHeldDown("right⇧", [
+        "right⌥⌃",
+      ]),
+      mapSimultaneous([R_SHIFT, R_CTRL, R_GUI]).toIfHeldDown("right⇧", [
+        "right⌘⌥",
+      ]),
+      mapSimultaneous([R_ALT, R_CTRL, R_GUI]).toIfHeldDown("right⌃", [
+        "right⌘⌥",
+      ]),
       //
       // Two - right hand
       mapSimultaneous([R_SHIFT, R_ALT], { key_down_order: KEY_DOWN_ORDER })
