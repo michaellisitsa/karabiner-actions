@@ -1,9 +1,13 @@
 import {
+  ifVar,
   map,
-  rule,
-  writeToProfile,
   mapSimultaneous,
+  rule,
   toKey,
+  toRemoveNotificationMessage,
+  toSetVar,
+  withModifier,
+  writeToProfile,
 } from "karabiner.ts";
 
 const L_GUI = "a";
@@ -38,6 +42,19 @@ writeToProfile(
     //    .toIfHeldDown("right⇧", "right⌘⌥⌃", { halt: true })
     //    .parameters({ "basic.to_if_held_down_threshold_milliseconds": 220 }),
     //]),
+
+    rule(`Physical Escape; Virtual CAPS LOCK`).manipulators([
+      withModifier("optionalAny")([
+        map("caps_lock").condition(ifVar("caps_lock_state", 0)).to("escape"),
+        map("caps_lock")
+          .condition(ifVar("caps_lock_state", 1))
+          .to(toSetVar("caps_lock_state", 0))
+          .to("caps_lock"),
+      ]),
+      mapSimultaneous([L_SHIFT, R_SHIFT])
+        .to(toSetVar("caps_lock_state", 1))
+        .to("caps_lock"),
+    ]),
 
     // Home row mods
     rule(
