@@ -16,7 +16,7 @@ const R_ALT = "k";
 const R_CTRL = "l";
 const R_GUI = ";";
 
-const KEY_DOWN_ORDER = 'insensitive'; // strict is recommended if issues
+const KEY_DOWN_ORDER = "insensitive"; // strict is recommended if issues
 
 writeToProfile(
   "Default profile",
@@ -40,10 +40,17 @@ writeToProfile(
     //]),
 
     // Home row mods
-    rule(`Home Row Mods (GUI: ${L_GUI}, Ctrl: ${L_CTRL}, Alt: ${L_ALT}, Shift: ${L_SHIFT})`).manipulators([
+    rule(
+      `Home Row Mods (GUI: ${L_GUI}, Ctrl: ${L_CTRL}, Alt: ${L_ALT}, Shift: ${L_SHIFT})`,
+    ).manipulators([
       //
       // Four - left hand
-      mapSimultaneous([L_SHIFT, L_CTRL, L_ALT, L_GUI]).toIfHeldDown("left⇧", ["l⌘⌥⌃"]),
+      // PLANNED: Add notifications to more easily troubleshoot timing
+      mapSimultaneous([L_SHIFT, L_CTRL, L_ALT, L_GUI], {
+        to_after_key_up: [toRemoveNotificationMessage("id")],
+      })
+        .toIfHeldDown("left⇧", ["l⌘⌥⌃"])
+        .toNotificationMessage("id", "All four"),
       //
       // Three - left hand
       mapSimultaneous([L_SHIFT, L_CTRL, L_ALT]).toIfHeldDown("left⇧", ["l⌥⌃"]),
@@ -197,9 +204,9 @@ writeToProfile(
     ]),
   ],
   {
-    "basic.to_if_alone_timeout_milliseconds": 500, // Default 1000
-    "basic.to_if_held_down_threshold_milliseconds": 90, // Default 500
+    "basic.to_if_alone_timeout_milliseconds": 200, // Default 1000
+    "basic.to_if_held_down_threshold_milliseconds": 200, // Default 500
     "basic.to_delayed_action_delay_milliseconds": 300, // Default 500
-    "basic.simultaneous_threshold_milliseconds": 45, // Default 50
+    "basic.simultaneous_threshold_milliseconds": 40, // Default 50
   },
 );
