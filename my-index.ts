@@ -133,6 +133,9 @@ writeToProfile(
       map(L_SHIFT)
         .toIfAlone(L_SHIFT, {}, { halt: true })
         .toDelayedAction(toKey("vk_none"), toKey(L_SHIFT))
+        // PLANNED: would be nice to have notification feedback, but doesn't work
+        // .toAfterKeyUp(toRemoveNotificationMessage("L_SHIFT"))
+        // .toNotificationMessage("L_SHIFT", "L_SHIFT")
         .toIfHeldDown("left⇧", {}, { halt: true }),
       map(L_CTRL)
         .toIfAlone(L_CTRL, {}, { halt: true })
@@ -234,9 +237,9 @@ writeToProfile(
     ]),
   ],
   {
-    "basic.to_if_alone_timeout_milliseconds": 200, // Default 1000
-    "basic.to_if_held_down_threshold_milliseconds": 200, // Default 500
+    "basic.to_if_alone_timeout_milliseconds": 300, // Default 1000
+    "basic.to_if_held_down_threshold_milliseconds": 150, // Default 500
     "basic.to_delayed_action_delay_milliseconds": 300, // Default 500
-    "basic.simultaneous_threshold_milliseconds": 40, // Default 50
+    "basic.simultaneous_threshold_milliseconds": 45, // Default 50
   },
 );
