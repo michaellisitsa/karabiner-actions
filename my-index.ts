@@ -4,7 +4,7 @@ import {
   mapSimultaneous,
   rule,
   toKey,
-  toRemoveNotificationMessage,
+  // toRemoveNotificationMessage,
   toSetVar,
   withModifier,
   writeToProfile,
@@ -70,10 +70,10 @@ writeToProfile(
       // Four - left hand
       // PLANNED: Add notifications to more easily troubleshoot timing
       mapSimultaneous([L_SHIFT, L_CTRL, L_ALT, L_GUI], {
-        to_after_key_up: [toRemoveNotificationMessage("id")],
+        // to_after_key_up: [toRemoveNotificationMessage("id")],
       })
-        .toIfHeldDown("left⇧", ["l⌘⌥⌃"])
-        .toNotificationMessage("id", "All four"),
+        .toIfHeldDown("left⇧", ["l⌘⌥⌃"]),
+        // .toNotificationMessage("id", "All four"),
       //
       // Three - left hand
       mapSimultaneous([L_SHIFT, L_CTRL, L_ALT]).toIfHeldDown("left⇧", ["l⌥⌃"]),
@@ -135,8 +135,8 @@ writeToProfile(
         .toIfAlone(L_SHIFT, {}, { halt: true })
         .toDelayedAction(toKey("vk_none"), toKey(L_SHIFT))
         // PLANNED: would be nice to have notification feedback, but doesn't work
-        // .toAfterKeyUp(toRemoveNotificationMessage("L_SHIFT"))
-        // .toNotificationMessage("L_SHIFT", "L_SHIFT")
+        // .toAfterKeyUp(toRemoveNotificationMessage("L_SHIFT_A"))
+        // .toNotificationMessage("L_SHIFT_A", "L_SHIFT Notify!")
         .toIfHeldDown("left⇧", {}, { halt: true }),
       map(L_CTRL)
         .toIfAlone(L_CTRL, {}, { halt: true })
