@@ -55,6 +55,7 @@ writeToProfile(
           .to(toSetVar("caps_lock_state", 0))
           .to("caps_lock"),
         map("-").condition(ifVar("caps_lock_state", 1)).to("-", ["left⇧"]),
+        map(";").condition(ifVar("caps_lock_state", 1)).to(";", ["left⇧"]),
       ]),
       mapSimultaneous([L_SHIFT, R_SHIFT])
         .to(toSetVar("caps_lock_state", 1))
