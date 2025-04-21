@@ -1,0 +1,3 @@
+[tools.node]
+version = "23.11.0"
+backend = "core:node"
