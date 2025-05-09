@@ -35,11 +35,11 @@ writeToProfile(
     //      toStickyModifier("left_option", "toggle"),
     //      toStickyModifier("left_command", "toggle"),
     //    ])
-    //    .toIfHeldDown("left⇧", "left⌘⌥⌃", { halt: true }),
+    //    .toIfHeldDown("left_shift", "left_command_option_control", { halt: true }),
     //  map("'")
     //    .toIfAlone("'", {}, { halt: true })
     //    .toDelayedAction(toKey("vk_none"), toKey("'"))
-    //    .toIfHeldDown("right⇧", "right⌘⌥⌃", { halt: true })
+    //    .toIfHeldDown("right_shift", "right_command_option_control", { halt: true })
     //    .parameters({ "basic.to_if_held_down_threshold_milliseconds": 220 }),
     //]),
 
@@ -54,8 +54,8 @@ writeToProfile(
           .condition(ifVar("caps_lock_state", 1))
           .to(toSetVar("caps_lock_state", 0))
           .to("caps_lock"),
-        map("-").condition(ifVar("caps_lock_state", 1)).to("-", ["left⇧"]),
-        map(";").condition(ifVar("caps_lock_state", 1)).to(";", ["left⇧"]),
+        map("-").condition(ifVar("caps_lock_state", 1)).to("-", ["left_shift"]),
+        map(";").condition(ifVar("caps_lock_state", 1)).to(";", ["left_shift"]),
       ]),
       mapSimultaneous([L_SHIFT, R_SHIFT])
         .to(toSetVar("caps_lock_state", 1))
@@ -71,64 +71,63 @@ writeToProfile(
       // PLANNED: Add notifications to more easily troubleshoot timing
       mapSimultaneous([L_SHIFT, L_CTRL, L_ALT, L_GUI], {
         // to_after_key_up: [toRemoveNotificationMessage("id")],
-      })
-        .toIfHeldDown("left⇧", ["l⌘⌥⌃"]),
-        // .toNotificationMessage("id", "All four"),
+      }).toIfHeldDown("left_shift", ["l_command_option_control"]),
+      // .toNotificationMessage("id", "All four"),
       //
       // Three - left hand
-      mapSimultaneous([L_SHIFT, L_CTRL, L_ALT]).toIfHeldDown("left⇧", ["l⌥⌃"]),
-      mapSimultaneous([L_SHIFT, L_ALT, L_GUI]).toIfHeldDown("left⇧", ["l⌘⌥"]),
-      mapSimultaneous([L_CTRL, L_ALT, L_GUI]).toIfHeldDown("left⌃", ["l⌘⌥"]),
+      mapSimultaneous([L_SHIFT, L_CTRL, L_ALT]).toIfHeldDown("left_shift", ["l_option_control"]),
+      mapSimultaneous([L_SHIFT, L_ALT, L_GUI]).toIfHeldDown("left_shift", ["l_command_option"]),
+      mapSimultaneous([L_CTRL, L_ALT, L_GUI]).toIfHeldDown("left_control", ["l_command_option"]),
       //
       // Two - left hand
       mapSimultaneous([L_SHIFT, L_CTRL], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_SHIFT)
         .toIfAlone(L_CTRL)
-        .toIfHeldDown("left⇧", "left⌃"),
+        .toIfHeldDown("left_shift", "left_control"),
       mapSimultaneous([L_CTRL, L_SHIFT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_CTRL)
         .toIfAlone(L_SHIFT)
-        .toIfHeldDown("left⇧", "left⌃"),
+        .toIfHeldDown("left_shift", "left_control"),
       mapSimultaneous([L_SHIFT, L_ALT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_SHIFT)
         .toIfAlone(L_ALT)
-        .toIfHeldDown("left⇧", "left⌥"),
+        .toIfHeldDown("left_shift", "left_option"),
       mapSimultaneous([L_ALT, L_SHIFT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_ALT)
         .toIfAlone(L_SHIFT)
-        .toIfHeldDown("left⇧", "left⌥"),
+        .toIfHeldDown("left_shift", "left_option"),
       mapSimultaneous([L_SHIFT, L_GUI], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_SHIFT)
         .toIfAlone(L_GUI)
-        .toIfHeldDown("left⇧", "left⌘"),
+        .toIfHeldDown("left_shift", "left_command"),
       mapSimultaneous([L_GUI, L_SHIFT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_GUI)
         .toIfAlone(L_SHIFT)
-        .toIfHeldDown("left⇧", "left⌘"),
+        .toIfHeldDown("left_shift", "left_command"),
       mapSimultaneous([L_CTRL, L_ALT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_CTRL)
         .toIfAlone(L_ALT)
-        .toIfHeldDown("left⌃", "left⌥"),
+        .toIfHeldDown("left_control", "left_option"),
       mapSimultaneous([L_ALT, L_CTRL], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_ALT)
         .toIfAlone(L_CTRL)
-        .toIfHeldDown("left⌃", "left⌥"),
+        .toIfHeldDown("left_control", "left_option"),
       mapSimultaneous([L_CTRL, L_GUI], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_CTRL)
         .toIfAlone(L_GUI)
-        .toIfHeldDown("left⌃", "left⌘"),
+        .toIfHeldDown("left_control", "left_command"),
       mapSimultaneous([L_GUI, L_CTRL], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_GUI)
         .toIfAlone(L_CTRL)
-        .toIfHeldDown("left⌃", "left⌘"),
+        .toIfHeldDown("left_control", "left_command"),
       mapSimultaneous([L_ALT, L_GUI], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_ALT)
         .toIfAlone(L_GUI)
-        .toIfHeldDown("left⌥", "left⌘"),
+        .toIfHeldDown("left_option", "left_command"),
       mapSimultaneous([L_GUI, L_ALT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(L_GUI)
         .toIfAlone(L_ALT)
-        .toIfHeldDown("left⌥", "left⌘"),
+        .toIfHeldDown("left_option", "left_command"),
       //
       // One - left hand
       map(L_SHIFT)
@@ -137,104 +136,104 @@ writeToProfile(
         // PLANNED: would be nice to have notification feedback, but doesn't work
         // .toAfterKeyUp(toRemoveNotificationMessage("L_SHIFT_A"))
         // .toNotificationMessage("L_SHIFT_A", "L_SHIFT Notify!")
-        .toIfHeldDown("left⇧", {}, { halt: true }),
+        .toIfHeldDown("left_shift", {}, { halt: true }),
       map(L_CTRL)
         .toIfAlone(L_CTRL, {}, { halt: true })
         .toDelayedAction(toKey("vk_none"), toKey(L_CTRL))
-        .toIfHeldDown("left⌃", {}, { halt: true }),
+        .toIfHeldDown("left_control", {}, { halt: true }),
       map(L_ALT)
         .toIfAlone(L_ALT, {}, { halt: true })
         .toDelayedAction(toKey("vk_none"), toKey(L_ALT))
-        .toIfHeldDown("left⌥", {}, { halt: true }),
+        .toIfHeldDown("left_option", {}, { halt: true }),
       map(L_GUI)
         .toIfAlone(L_GUI, {}, { halt: true })
         .toDelayedAction(toKey("vk_none"), toKey(L_GUI, {}, { halt: true }))
-        .toIfHeldDown("left⌘", {}, { halt: true }),
+        .toIfHeldDown("left_command", {}, { halt: true }),
       //
       //
       // Four - right hand
-      mapSimultaneous([R_GUI, R_CTRL, R_ALT, R_SHIFT]).toIfHeldDown("right⇧", [
-        "right⌘⌥⌃",
+      mapSimultaneous([R_GUI, R_CTRL, R_ALT, R_SHIFT]).toIfHeldDown("right_shift", [
+        "right_command_option_control",
       ]),
       //
       // Three - right hand
-      mapSimultaneous([R_SHIFT, R_ALT, R_CTRL]).toIfHeldDown("right⇧", [
-        "right⌥⌃",
+      mapSimultaneous([R_SHIFT, R_ALT, R_CTRL]).toIfHeldDown("right_shift", [
+        "right_option_control",
       ]),
-      mapSimultaneous([R_SHIFT, R_CTRL, R_GUI]).toIfHeldDown("right⇧", [
-        "right⌘⌥",
+      mapSimultaneous([R_SHIFT, R_CTRL, R_GUI]).toIfHeldDown("right_shift", [
+        "right_command_option",
       ]),
-      mapSimultaneous([R_ALT, R_CTRL, R_GUI]).toIfHeldDown("right⌃", [
-        "right⌘⌥",
+      mapSimultaneous([R_ALT, R_CTRL, R_GUI]).toIfHeldDown("right_control", [
+        "right_command_option",
       ]),
       //
       // Two - right hand
       mapSimultaneous([R_SHIFT, R_ALT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_SHIFT)
         .toIfAlone(R_ALT)
-        .toIfHeldDown("right⇧", "right⌃"),
+        .toIfHeldDown("right_shift", "right_control"),
       mapSimultaneous([R_ALT, R_SHIFT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_ALT)
         .toIfAlone(R_SHIFT)
-        .toIfHeldDown("right⇧", "right⌃"),
+        .toIfHeldDown("right_shift", "right_control"),
       mapSimultaneous([R_SHIFT, R_CTRL], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_SHIFT)
         .toIfAlone(R_CTRL)
-        .toIfHeldDown("right⇧", "right⌥"),
+        .toIfHeldDown("right_shift", "right_option"),
       mapSimultaneous([R_CTRL, R_SHIFT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_CTRL)
         .toIfAlone(R_SHIFT)
-        .toIfHeldDown("right⇧", "right⌥"),
+        .toIfHeldDown("right_shift", "right_option"),
       mapSimultaneous([R_SHIFT, R_GUI], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_SHIFT)
         .toIfAlone(R_GUI)
-        .toIfHeldDown("right⇧", "right⌘"),
+        .toIfHeldDown("right_shift", "right_command"),
       mapSimultaneous([R_GUI, R_SHIFT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_GUI)
         .toIfAlone(R_SHIFT)
-        .toIfHeldDown("right⇧", "right⌘"),
+        .toIfHeldDown("right_shift", "right_command"),
       mapSimultaneous([R_ALT, R_CTRL], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_ALT)
         .toIfAlone(R_CTRL)
-        .toIfHeldDown("right⌃", "right⌥"),
+        .toIfHeldDown("right_control", "right_option"),
       mapSimultaneous([R_CTRL, R_ALT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_CTRL)
         .toIfAlone(R_ALT)
-        .toIfHeldDown("right⌃", "right⌥"),
+        .toIfHeldDown("right_control", "right_option"),
       mapSimultaneous([R_ALT, R_GUI], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_ALT)
         .toIfAlone(R_GUI)
-        .toIfHeldDown("right⌃", "right⌘"),
+        .toIfHeldDown("right_control", "right_command"),
       mapSimultaneous([R_GUI, R_ALT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_GUI)
         .toIfAlone(R_ALT)
-        .toIfHeldDown("right⌃", "right⌘"),
+        .toIfHeldDown("right_control", "right_command"),
       mapSimultaneous([R_CTRL, R_GUI], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_CTRL)
         .toIfAlone(R_GUI)
-        .toIfHeldDown("right⌥", "right⌘"),
+        .toIfHeldDown("right_option", "right_command"),
       mapSimultaneous([R_GUI, R_CTRL], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_GUI)
         .toIfAlone(R_CTRL)
-        .toIfHeldDown("right⌥", "right⌘"),
+        .toIfHeldDown("right_option", "right_command"),
       //
       // One - right hand
       map(R_SHIFT)
         .toIfAlone(R_SHIFT, {}, { halt: true })
         .toDelayedAction(toKey("vk_none"), toKey(R_SHIFT))
-        .toIfHeldDown("right⇧", {}, { halt: true }),
+        .toIfHeldDown("right_shift", {}, { halt: true }),
       map(R_ALT)
         .toIfAlone(R_ALT, {}, { halt: true })
         .toDelayedAction(toKey("vk_none"), toKey(R_ALT))
-        .toIfHeldDown("right⌃", {}, { halt: true }),
+        .toIfHeldDown("right_control", {}, { halt: true }),
       map(R_CTRL)
         .toIfAlone(R_CTRL, {}, { halt: true })
         .toDelayedAction(toKey("vk_none"), toKey(R_CTRL))
-        .toIfHeldDown("right⌥", {}, { halt: true }),
+        .toIfHeldDown("right_option", {}, { halt: true }),
       map(R_GUI)
         .toIfAlone(R_GUI, {}, { halt: true })
         .toDelayedAction(toKey("vk_none"), toKey(R_GUI))
-        .toIfHeldDown("right⌘", {}, { halt: true }),
+        .toIfHeldDown("right_command", {}, { halt: true }),
     ]),
   ],
   {
