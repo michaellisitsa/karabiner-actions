@@ -17,8 +17,8 @@ const L_CTRL = "d";
 const L_SHIFT = "f";
 
 const R_SHIFT = "j";
-const R_ALT = "k";
-const R_CTRL = "l";
+const R_CTRL = "k";
+const R_ALT = "l";
 const R_GUI = ";";
 
 const KEY_DOWN_ORDER = "insensitive"; // strict is recommended if issues
@@ -173,37 +173,37 @@ writeToProfile(
       //
       //
       // Four - right hand
-      mapSimultaneous([R_GUI, R_CTRL, R_ALT, R_SHIFT]).toIfHeldDown(
+      mapSimultaneous([R_GUI, R_ALT, R_CTRL, R_SHIFT]).toIfHeldDown(
         "right_shift",
         ["right_command_option_control"],
       ),
       //
       // Three - right hand
-      mapSimultaneous([R_SHIFT, R_ALT, R_CTRL]).toIfHeldDown("right_shift", [
+      mapSimultaneous([R_SHIFT, R_CTRL, R_ALT]).toIfHeldDown("right_shift", [
         "right_option_control",
       ]),
-      mapSimultaneous([R_SHIFT, R_CTRL, R_GUI]).toIfHeldDown("right_shift", [
+      mapSimultaneous([R_SHIFT, R_ALT, R_GUI]).toIfHeldDown("right_shift", [
         "right_command_option",
       ]),
-      mapSimultaneous([R_ALT, R_CTRL, R_GUI]).toIfHeldDown("right_control", [
+      mapSimultaneous([R_CTRL, R_ALT, R_GUI]).toIfHeldDown("right_control", [
         "right_command_option",
       ]),
       //
       // Two - right hand
-      mapSimultaneous([R_SHIFT, R_ALT], { key_down_order: KEY_DOWN_ORDER })
-        .toIfAlone(R_SHIFT)
-        .toIfAlone(R_ALT)
-        .toIfHeldDown("right_shift", "right_control"),
-      mapSimultaneous([R_ALT, R_SHIFT], { key_down_order: KEY_DOWN_ORDER })
-        .toIfAlone(R_ALT)
-        .toIfAlone(R_SHIFT)
-        .toIfHeldDown("right_shift", "right_control"),
       mapSimultaneous([R_SHIFT, R_CTRL], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_SHIFT)
         .toIfAlone(R_CTRL)
-        .toIfHeldDown("right_shift", "right_option"),
+        .toIfHeldDown("right_shift", "right_control"),
       mapSimultaneous([R_CTRL, R_SHIFT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_CTRL)
+        .toIfAlone(R_SHIFT)
+        .toIfHeldDown("right_shift", "right_control"),
+      mapSimultaneous([R_SHIFT, R_ALT], { key_down_order: KEY_DOWN_ORDER })
+        .toIfAlone(R_SHIFT)
+        .toIfAlone(R_ALT)
+        .toIfHeldDown("right_shift", "right_option"),
+      mapSimultaneous([R_ALT, R_SHIFT], { key_down_order: KEY_DOWN_ORDER })
+        .toIfAlone(R_ALT)
         .toIfAlone(R_SHIFT)
         .toIfHeldDown("right_shift", "right_option"),
       mapSimultaneous([R_SHIFT, R_GUI], { key_down_order: KEY_DOWN_ORDER })
@@ -214,29 +214,29 @@ writeToProfile(
         .toIfAlone(R_GUI)
         .toIfAlone(R_SHIFT)
         .toIfHeldDown("right_shift", "right_command"),
-      mapSimultaneous([R_ALT, R_CTRL], { key_down_order: KEY_DOWN_ORDER })
-        .toIfAlone(R_ALT)
-        .toIfAlone(R_CTRL)
-        .toIfHeldDown("right_control", "right_option"),
       mapSimultaneous([R_CTRL, R_ALT], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_CTRL)
         .toIfAlone(R_ALT)
         .toIfHeldDown("right_control", "right_option"),
-      mapSimultaneous([R_ALT, R_GUI], { key_down_order: KEY_DOWN_ORDER })
+      mapSimultaneous([R_ALT, R_CTRL], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_ALT)
-        .toIfAlone(R_GUI)
-        .toIfHeldDown("right_control", "right_command"),
-      mapSimultaneous([R_GUI, R_ALT], { key_down_order: KEY_DOWN_ORDER })
-        .toIfAlone(R_GUI)
-        .toIfAlone(R_ALT)
-        .toIfHeldDown("right_control", "right_command"),
+        .toIfAlone(R_CTRL)
+        .toIfHeldDown("right_control", "right_option"),
       mapSimultaneous([R_CTRL, R_GUI], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_CTRL)
         .toIfAlone(R_GUI)
-        .toIfHeldDown("right_option", "right_command"),
+        .toIfHeldDown("right_control", "right_command"),
       mapSimultaneous([R_GUI, R_CTRL], { key_down_order: KEY_DOWN_ORDER })
         .toIfAlone(R_GUI)
         .toIfAlone(R_CTRL)
+        .toIfHeldDown("right_control", "right_command"),
+      mapSimultaneous([R_ALT, R_GUI], { key_down_order: KEY_DOWN_ORDER })
+        .toIfAlone(R_ALT)
+        .toIfAlone(R_GUI)
+        .toIfHeldDown("right_option", "right_command"),
+      mapSimultaneous([R_GUI, R_ALT], { key_down_order: KEY_DOWN_ORDER })
+        .toIfAlone(R_GUI)
+        .toIfAlone(R_ALT)
         .toIfHeldDown("right_option", "right_command"),
       //
       // One - right hand
@@ -244,13 +244,13 @@ writeToProfile(
         .toIfAlone(R_SHIFT, {}, { halt: true })
         .toDelayedAction(toKey("vk_none"), toKey(R_SHIFT))
         .toIfHeldDown("right_shift", {}, { halt: true }),
-      map(R_ALT)
-        .toIfAlone(R_ALT, {}, { halt: true })
-        .toDelayedAction(toKey("vk_none"), toKey(R_ALT))
-        .toIfHeldDown("right_control", {}, { halt: true }),
       map(R_CTRL)
         .toIfAlone(R_CTRL, {}, { halt: true })
         .toDelayedAction(toKey("vk_none"), toKey(R_CTRL))
+        .toIfHeldDown("right_control", {}, { halt: true }),
+      map(R_ALT)
+        .toIfAlone(R_ALT, {}, { halt: true })
+        .toDelayedAction(toKey("vk_none"), toKey(R_ALT))
         .toIfHeldDown("right_option", {}, { halt: true }),
       map(R_GUI)
         .toIfAlone(R_GUI, {}, { halt: true })
