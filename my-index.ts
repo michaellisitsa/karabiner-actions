@@ -1,4 +1,5 @@
 import {
+  duoLayer,
   ifVar,
   map,
   mapSimultaneous,
@@ -8,7 +9,6 @@ import {
   withModifier,
   writeToProfile,
   layer,
-  duoLayer,
 } from "karabiner.ts";
 
 const L_GUI = "a";
@@ -26,7 +26,9 @@ const KEY_DOWN_ORDER = "insensitive"; // strict is recommended if issues
 writeToProfile(
   "Default profile",
   [
+    // Configure easier-to-use Escape from CAPS Lock
     rule(`Physical Escape; Virtual CAPS LOCK`).manipulators([
+      map("caps_lock").to("escape"),
       withModifier("optionalAny")([
         map("caps_lock").condition(ifVar("caps_lock_state", 0)).to("escape"),
         map("caps_lock")
@@ -40,6 +42,7 @@ writeToProfile(
         map("-").condition(ifVar("caps_lock_state", 1)).to("-", ["left_shift"]),
         map(";").condition(ifVar("caps_lock_state", 1)).to(";", ["left_shift"]),
       ]),
+      // Add alternate CAPS Lock
       mapSimultaneous([L_SHIFT, R_SHIFT])
         .to(toSetVar("caps_lock_state", 1))
         .to("caps_lock"),
