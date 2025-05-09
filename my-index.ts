@@ -1,5 +1,6 @@
 import {
   duoLayer,
+  hyperLayer,
   ifVar,
   map,
   mapSimultaneous,
@@ -8,7 +9,6 @@ import {
   toSetVar,
   withModifier,
   writeToProfile,
-  layer,
 } from "karabiner.ts";
 
 const L_GUI = "a";
@@ -48,6 +48,25 @@ writeToProfile(
         .to("caps_lock"),
     ]),
 
+    // Symbol Layer
+    rule(`Symbol Layer Remapping`).manipulators([
+      map("right_command").toHyper(),
+    ]),
+    hyperLayer("g")
+      .description("Symbol Layer")
+      .leaderMode({
+        sticky: true,
+        escape: [
+          "caps_lock",
+          "escape",
+          "return_or_enter",
+          "right_command",
+          "spacebar",
+        ],
+      })
+      // .notification() // Recommended
+      .manipulators([map("q").to("1"), map("w").to("9")]),
+
     // Numbers Layer
     duoLayer("v", "m").manipulators([
       map("h").to(0),
@@ -68,8 +87,10 @@ writeToProfile(
     ).manipulators([
       //
       // Four - left hand
-      mapSimultaneous([L_SHIFT, L_CTRL, L_ALT, L_GUI], {
-      }).toIfHeldDown("left_shift", ["l_command_option_control"]),
+      mapSimultaneous([L_SHIFT, L_CTRL, L_ALT, L_GUI], {}).toIfHeldDown(
+        "left_shift",
+        ["l_command_option_control"],
+      ),
       //
       // Three - left hand
       mapSimultaneous([L_SHIFT, L_CTRL, L_ALT]).toIfHeldDown("left_shift", [
