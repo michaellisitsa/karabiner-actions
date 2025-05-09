@@ -4,7 +4,6 @@ import {
   mapSimultaneous,
   rule,
   toKey,
-  // toRemoveNotificationMessage,
   toSetVar,
   withModifier,
   writeToProfile,
@@ -27,24 +26,6 @@ const KEY_DOWN_ORDER = "insensitive"; // strict is recommended if issues
 writeToProfile(
   "Default profile",
   [
-    // Alt: https://karabiner.ts.evanliu.dev/examples/modifier-keys/caps_lock-to-hyper
-    //rule("Caps + Quote -> Hyper").manipulators([
-    //  map("⇪")
-    //    .toIfAlone("⇪", {}, { halt: true })
-    //    .toDelayedAction(toNone(), [
-    //      toStickyModifier("left_shift", "toggle"),
-    //      toStickyModifier("left_control", "toggle"),
-    //      toStickyModifier("left_option", "toggle"),
-    //      toStickyModifier("left_command", "toggle"),
-    //    ])
-    //    .toIfHeldDown("left_shift", "left_command_option_control", { halt: true }),
-    //  map("'")
-    //    .toIfAlone("'", {}, { halt: true })
-    //    .toDelayedAction(toKey("vk_none"), toKey("'"))
-    //    .toIfHeldDown("right_shift", "right_command_option_control", { halt: true })
-    //    .parameters({ "basic.to_if_held_down_threshold_milliseconds": 220 }),
-    //]),
-
     rule(`Physical Escape; Virtual CAPS LOCK`).manipulators([
       withModifier("optionalAny")([
         map("caps_lock").condition(ifVar("caps_lock_state", 0)).to("escape"),
@@ -84,11 +65,8 @@ writeToProfile(
     ).manipulators([
       //
       // Four - left hand
-      // PLANNED: Add notifications to more easily troubleshoot timing
       mapSimultaneous([L_SHIFT, L_CTRL, L_ALT, L_GUI], {
-        // to_after_key_up: [toRemoveNotificationMessage("id")],
       }).toIfHeldDown("left_shift", ["l_command_option_control"]),
-      // .toNotificationMessage("id", "All four"),
       //
       // Three - left hand
       mapSimultaneous([L_SHIFT, L_CTRL, L_ALT]).toIfHeldDown("left_shift", [
@@ -155,9 +133,6 @@ writeToProfile(
       map(L_SHIFT)
         .toIfAlone(L_SHIFT, {}, { halt: true })
         .toDelayedAction(toKey("vk_none"), toKey(L_SHIFT))
-        // PLANNED: would be nice to have notification feedback, but doesn't work
-        // .toAfterKeyUp(toRemoveNotificationMessage("L_SHIFT_A"))
-        // .toNotificationMessage("L_SHIFT_A", "L_SHIFT Notify!")
         .toIfHeldDown("left_shift", {}, { halt: true }),
       map(L_CTRL)
         .toIfAlone(L_CTRL, {}, { halt: true })
