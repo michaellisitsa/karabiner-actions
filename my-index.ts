@@ -8,6 +8,8 @@ import {
   toSetVar,
   withModifier,
   writeToProfile,
+  layer,
+  duoLayer,
 } from "karabiner.ts";
 
 const L_GUI = "a";
@@ -62,6 +64,20 @@ writeToProfile(
         .to("caps_lock"),
     ]),
 
+    // Numbers Layer
+    duoLayer("v", "m").manipulators([
+      map("h").to(0),
+      map("m").to(1),
+      map(",").to(2),
+      map(".").to(3),
+      map("j").to(4),
+      map("k").to(5),
+      map("l").to(6),
+      map("u").to(7),
+      map("i").to(8),
+      map("o").to(9),
+    ]),
+
     // Home row mods
     rule(
       `Home Row Mods (GUI: ${L_GUI}, Ctrl: ${L_CTRL}, Alt: ${L_ALT}, Shift: ${L_SHIFT})`,
@@ -75,9 +91,15 @@ writeToProfile(
       // .toNotificationMessage("id", "All four"),
       //
       // Three - left hand
-      mapSimultaneous([L_SHIFT, L_CTRL, L_ALT]).toIfHeldDown("left_shift", ["l_option_control"]),
-      mapSimultaneous([L_SHIFT, L_ALT, L_GUI]).toIfHeldDown("left_shift", ["l_command_option"]),
-      mapSimultaneous([L_CTRL, L_ALT, L_GUI]).toIfHeldDown("left_control", ["l_command_option"]),
+      mapSimultaneous([L_SHIFT, L_CTRL, L_ALT]).toIfHeldDown("left_shift", [
+        "l_option_control",
+      ]),
+      mapSimultaneous([L_SHIFT, L_ALT, L_GUI]).toIfHeldDown("left_shift", [
+        "l_command_option",
+      ]),
+      mapSimultaneous([L_CTRL, L_ALT, L_GUI]).toIfHeldDown("left_control", [
+        "l_command_option",
+      ]),
       //
       // Two - left hand
       mapSimultaneous([L_SHIFT, L_CTRL], { key_down_order: KEY_DOWN_ORDER })
@@ -152,9 +174,10 @@ writeToProfile(
       //
       //
       // Four - right hand
-      mapSimultaneous([R_GUI, R_CTRL, R_ALT, R_SHIFT]).toIfHeldDown("right_shift", [
-        "right_command_option_control",
-      ]),
+      mapSimultaneous([R_GUI, R_CTRL, R_ALT, R_SHIFT]).toIfHeldDown(
+        "right_shift",
+        ["right_command_option_control"],
+      ),
       //
       // Three - right hand
       mapSimultaneous([R_SHIFT, R_ALT, R_CTRL]).toIfHeldDown("right_shift", [
