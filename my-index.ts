@@ -87,20 +87,24 @@ writeToProfile(
     ).manipulators([
       //
       // Four - left hand
-      mapSimultaneous([L_SHIFT, L_CTRL, L_ALT, L_GUI], {}).toIfHeldDown(
+      mapSimultaneous([L_SHIFT, L_CTRL, L_ALT, L_GUI]).toIfHeldDown(
         "left_shift",
-        ["l_command_option_control"],
+        ["left_control", "left_option", "left_command"],
       ),
       //
       // Three - left hand
       mapSimultaneous([L_SHIFT, L_CTRL, L_ALT]).toIfHeldDown("left_shift", [
-        "l_option_control",
+        "left_control",
+        "left_option",
+        "left_command",
       ]),
       mapSimultaneous([L_SHIFT, L_ALT, L_GUI]).toIfHeldDown("left_shift", [
-        "l_command_option",
+        "left_option",
+        "left_command",
       ]),
       mapSimultaneous([L_CTRL, L_ALT, L_GUI]).toIfHeldDown("left_control", [
-        "l_command_option",
+        "left_option",
+        "left_command",
       ]),
       //
       // Two - left hand
@@ -175,18 +179,21 @@ writeToProfile(
       // Four - right hand
       mapSimultaneous([R_GUI, R_ALT, R_CTRL, R_SHIFT]).toIfHeldDown(
         "right_shift",
-        ["right_command_option_control"],
+        ["right_control", "right_option", "right_command"],
       ),
       //
       // Three - right hand
       mapSimultaneous([R_SHIFT, R_CTRL, R_ALT]).toIfHeldDown("right_shift", [
-        "right_option_control",
+        "right_control",
+        "right_option",
       ]),
       mapSimultaneous([R_SHIFT, R_ALT, R_GUI]).toIfHeldDown("right_shift", [
-        "right_command_option",
+        "right_option",
+        "right_command",
       ]),
       mapSimultaneous([R_CTRL, R_ALT, R_GUI]).toIfHeldDown("right_control", [
-        "right_command_option",
+        "right_option",
+        "right_command",
       ]),
       //
       // Two - right hand
