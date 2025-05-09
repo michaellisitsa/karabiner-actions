@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/KyleKing/karabiner-actions#readme",
   "devDependencies": {
-    "tsx": "^4.19.3"
+    "tsx": "^4.19.4"
   },
   "dependencies": {
     "karabiner.ts": "^1.31.0"

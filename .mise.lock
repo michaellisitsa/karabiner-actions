@@ -1,3 +1,6 @@
 [tools.node]
-version = "23.11.0"
+version = "24.0.0"
 backend = "core:node"
+
+[tools.node.checksums]
+"node-v24.0.0-darwin-arm64.tar.gz" = "sha256:194e2f3dd3ec8c2adcaa713ed40f44c5ca38467880e160974ceac1659be60121"
