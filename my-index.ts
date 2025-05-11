@@ -317,7 +317,7 @@ writeToProfile(
   ],
   {
     "basic.to_if_alone_timeout_milliseconds": 300, // Default 1000
-    "basic.to_if_held_down_threshold_milliseconds": 130, // Default 500
+    "basic.to_if_held_down_threshold_milliseconds": 200, // Default 500
     "basic.to_delayed_action_delay_milliseconds": 200, // Default 500
     "basic.simultaneous_threshold_milliseconds": 45, // Default 50
   },
