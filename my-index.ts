@@ -48,88 +48,88 @@ writeToProfile(
         .to("caps_lock"),
     ]),
 
-    // // Symbol Layer
-    // rule(`Symbol Layer Remapping`).manipulators([
-    //   map("right_command").toHyper(), // Interferes with tab navigation
+    // // // Symbol Layer
+    // // rule(`Symbol Layer Remapping`).manipulators([
+    // //   map("right_command").toHyper(), // Interferes with tab navigation
+    // // ]),
+    // hyperLayer("g")
+    //   .description("Symbol Hyper Layer")
+    //   .leaderMode({
+    //     sticky: true,
+    //     escape: [
+    //       "caps_lock",
+    //       "escape",
+    //       "return_or_enter",
+    //       "right_command",
+    //       "spacebar",
+    //     ],
+    //   })
+    //   // .notification() // Recommended
+    //   .manipulators([
+    //     map("j").to("9", ["left_shift"]), // Left parenthesis (
+    //     map("k").to("0", ["left_shift"]), // Right parenthesis )
+    //     map("u").to("["),
+    //     map("i").to("]"),
+    //     map("m").to("[", ["left_shift"]), // Left curly {
+    //     map(",").to("]", ["left_shift"]), // Right curly }
+    //   ]),
+    //
+    // // Symbol Duo Layer (using spacebar+g combo)
+    // duoLayer("spacebar", "g")
+    //   .description("Symbol Chord Layer")
+    //   .manipulators([
+    //     map("j").to("9", ["left_shift"]), // Left parenthesis (
+    //     map("k").to("0", ["left_shift"]), // Right parenthesis )
+    //     map("u").to("["), // Left square bracket
+    //     map("i").to("]"), // Right square bracket
+    //     map("h").to("open_bracket", ["left_shift"]), // Left curly {
+    //     map("l").to("close_bracket", ["left_shift"]), // Right curly }
+    //     map("n").to("comma", ["left_shift"]), // Left angle bracket <
+    //     map("m").to("period", ["left_shift"]), // Right angle bracket >
+    //     map("1").to("1", ["left_shift"]), // Exclamation mark !
+    //     map("2").to("2", ["left_shift"]), // At symbol @
+    //     map("3").to("3", ["left_shift"]), // Hash/pound #
+    //     map("4").to("4", ["left_shift"]), // Dollar sign $
+    //     map("5").to("5", ["left_shift"]), // Percent %
+    //     map("6").to("6", ["left_shift"]), // Caret ^
+    //     map("7").to("7", ["left_shift"]), // Ampersand &
+    //     map("8").to("8", ["left_shift"]), // Asterisk *
+    //     map("9").to("9", ["left_shift"]), // Open parenthesis (
+    //     map("0").to("0", ["left_shift"]), // Close parenthesis )
+    //     map("hyphen").to("hyphen", ["left_shift"]), // Underscore _
+    //     map("equal_sign").to("equal_sign", ["left_shift"]), // Plus +
+    //   ]),
+    //
+    // // Parentheses Layer
+    // hyperLayer("p")
+    //   .description("Parentheses and Brackets Layer")
+    //   .leaderMode({
+    //     sticky: false, // Non-sticky mode: needs to be held down
+    //   })
+    //   .manipulators([
+    //     map("j").to("9", ["left_shift"]), // Left parenthesis (
+    //     map("k").to("0", ["left_shift"]), // Right parenthesis )
+    //     map("u").to("["), // Left square bracket [
+    //     map("i").to("]"), // Right square bracket ]
+    //     map("h").to("open_bracket", ["left_shift"]), // Left curly {
+    //     map("l").to("close_bracket", ["left_shift"]), // Right curly }
+    //     map("n").to("comma", ["left_shift"]), // Left angle bracket <
+    //     map("m").to("period", ["left_shift"]), // Right angle bracket >
+    //   ]),
+    //
+    // // Numbers Layer
+    // duoLayer("v", "m").manipulators([
+    //   map("h").to(0),
+    //   map("m").to(1),
+    //   map(",").to(2),
+    //   map(".").to(3),
+    //   map("j").to(4),
+    //   map("k").to(5),
+    //   map("l").to(6),
+    //   map("u").to(7),
+    //   map("i").to(8),
+    //   map("o").to(9),
     // ]),
-    hyperLayer("g")
-      .description("Symbol Hyper Layer")
-      .leaderMode({
-        sticky: true,
-        escape: [
-          "caps_lock",
-          "escape",
-          "return_or_enter",
-          "right_command",
-          "spacebar",
-        ],
-      })
-      // .notification() // Recommended
-      .manipulators([
-        map("j").to("9", ["left_shift"]), // Left parenthesis (
-        map("k").to("0", ["left_shift"]), // Right parenthesis )
-        map("u").to("["),
-        map("i").to("]"),
-        map("m").to("[", ["left_shift"]), // Left curly {
-        map(",").to("]", ["left_shift"]), // Right curly }
-      ]),
-
-    // Symbol Duo Layer (using spacebar+g combo)
-    duoLayer("spacebar", "g")
-      .description("Symbol Chord Layer")
-      .manipulators([
-        map("j").to("9", ["left_shift"]), // Left parenthesis (
-        map("k").to("0", ["left_shift"]), // Right parenthesis )
-        map("u").to("["), // Left square bracket
-        map("i").to("]"), // Right square bracket
-        map("h").to("open_bracket", ["left_shift"]), // Left curly {
-        map("l").to("close_bracket", ["left_shift"]), // Right curly }
-        map("n").to("comma", ["left_shift"]), // Left angle bracket <
-        map("m").to("period", ["left_shift"]), // Right angle bracket >
-        map("1").to("1", ["left_shift"]), // Exclamation mark !
-        map("2").to("2", ["left_shift"]), // At symbol @
-        map("3").to("3", ["left_shift"]), // Hash/pound #
-        map("4").to("4", ["left_shift"]), // Dollar sign $
-        map("5").to("5", ["left_shift"]), // Percent %
-        map("6").to("6", ["left_shift"]), // Caret ^
-        map("7").to("7", ["left_shift"]), // Ampersand &
-        map("8").to("8", ["left_shift"]), // Asterisk *
-        map("9").to("9", ["left_shift"]), // Open parenthesis (
-        map("0").to("0", ["left_shift"]), // Close parenthesis )
-        map("hyphen").to("hyphen", ["left_shift"]), // Underscore _
-        map("equal_sign").to("equal_sign", ["left_shift"]), // Plus +
-      ]),
-
-    // Parentheses Layer
-    hyperLayer("p")
-      .description("Parentheses and Brackets Layer")
-      .leaderMode({
-        sticky: false, // Non-sticky mode: needs to be held down
-      })
-      .manipulators([
-        map("j").to("9", ["left_shift"]), // Left parenthesis (
-        map("k").to("0", ["left_shift"]), // Right parenthesis )
-        map("u").to("["), // Left square bracket [
-        map("i").to("]"), // Right square bracket ]
-        map("h").to("open_bracket", ["left_shift"]), // Left curly {
-        map("l").to("close_bracket", ["left_shift"]), // Right curly }
-        map("n").to("comma", ["left_shift"]), // Left angle bracket <
-        map("m").to("period", ["left_shift"]), // Right angle bracket >
-      ]),
-
-    // Numbers Layer
-    duoLayer("v", "m").manipulators([
-      map("h").to(0),
-      map("m").to(1),
-      map(",").to(2),
-      map(".").to(3),
-      map("j").to(4),
-      map("k").to(5),
-      map("l").to(6),
-      map("u").to(7),
-      map("i").to(8),
-      map("o").to(9),
-    ]),
 
     // Home row mods
     rule(
