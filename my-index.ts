@@ -13,11 +13,11 @@ import {
 
 const L_GUI = "a";
 const L_ALT = "s";
-const L_CTRL = "d";
-const L_SHIFT = "f";
+const L_SHIFT = "d";
+const L_CTRL = "f";
 
-const R_SHIFT = "j";
-const R_CTRL = "k";
+const R_CTRL = "j";
+const R_SHIFT = "k";
 const R_ALT = "l";
 const R_GUI = ";";
 
@@ -42,10 +42,6 @@ writeToProfile(
         map("-").condition(ifVar("caps_lock_state", 1)).to("-", ["left_shift"]),
         map(";").condition(ifVar("caps_lock_state", 1)).to(";", ["left_shift"]),
       ]),
-      // Add alternate CAPS Lock
-      mapSimultaneous([L_SHIFT, R_SHIFT])
-        .to(toSetVar("caps_lock_state", 1))
-        .to("caps_lock"),
     ]),
 
     // // // Symbol Layer
